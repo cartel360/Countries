@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 64ac15 */
+        
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+        
+        body {
+            padding: 1em;
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            color: #b9b9b9;
+            background-color: #e3e3e3;
+        }
+        
+        h4 {
+            color: #f0a500;
+        }
+        
+        input,
+        select option,
+        select {
+            width: 100%;
+            padding: 1em;
+            line-height: 1.4;
+            background-color: #f9f9f9;
+            border: 1px solid #e5e5e5;
+            border-radius: 3px;
+            -webkit-transition: 0.35s ease-in-out;
+            -moz-transition: 0.35s ease-in-out;
+            -o-transition: 0.35s ease-in-out;
+            transition: 0.35s ease-in-out;
+            transition: all 0.35s ease-in-out;
+        }
+        
+        input:focus {
+            outline: 0;
+            border-color: #bd8200;
+        }
+        
+        input:focus+.input-icon i {
+            color: #f0a500;
+        }
+        
+        input:focus+.input-icon:after {
+            border-right-color: #f0a500;
+        }
+        
+        input[type="radio"] {
+            display: none;
+        }
+        
+        input[type="radio"]+label,
+        select {
+            display: inline-block;
+            width: 50%;
+            text-align: center;
+            float: left;
+            border-radius: 0;
+        }
+        
+        select {
+            height: 3.4em;
+            line-height: 2;
+        }
+        
+        select:first-of-type {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+        
+        select:last-of-type {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+        
+        select:focus,
+        select:active {
+            outline: 0;
+        }
+        
+        select option {
+            background-color: #f0a500;
+            color: #fff;
+        }
+        
+        .input-group {
+            margin-bottom: 1em;
+            zoom: 1;
+        }
+        
+        .input-group:before,
+        .input-group:after {
+            content: "";
+            display: table;
+        }
+        
+        .input-group:after {
+            clear: both;
+        }
+        
+        .input-group-icon {
+            position: relative;
+        }
+        
+        .input-group-icon input {
+            padding-left: 4.4em;
+        }
+        
+        .input-group-icon .input-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3.4em;
+            height: 3.4em;
+            line-height: 3.4em;
+            text-align: center;
+            pointer-events: none;
+        }
+        
+        .input-group-icon .input-icon:after {
+            position: absolute;
+            top: 0.6em;
+            bottom: 0.6em;
+            left: 3.4em;
+            display: block;
+            border-right: 1px solid #e5e5e5;
+            content: "";
+            -webkit-transition: 0.35s ease-in-out;
+            -moz-transition: 0.35s ease-in-out;
+            -o-transition: 0.35s ease-in-out;
+            transition: 0.35s ease-in-out;
+            transition: all 0.35s ease-in-out;
+        }
+        
+        .input-group-icon .input-icon i {
+            -webkit-transition: 0.35s ease-in-out;
+            -moz-transition: 0.35s ease-in-out;
+            -o-transition: 0.35s ease-in-out;
+            transition: 0.35s ease-in-out;
+            transition: all 0.35s ease-in-out;
+        }
+        
+        .container {
+            max-width: 38em;
+            padding: 1em 3em 2em 3em;
+            margin: 0em auto;
+            background-color: #fff;
+            border-radius: 4.2px;
+            box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .row {
+            zoom: 1;
+        }
+        
+        .row:before,
+        .row:after {
+            content: "";
+            display: table;
+        }
+        
+        .row:after {
+            clear: both;
+        }
+        
+        .col-half {
+            padding-right: 10px;
+            float: left;
+            width: 50%;
+        }
+        
+        .col-half:last-of-type {
+            padding-right: 0;
+        }
+        
+        .col-third {
+            padding-right: 10px;
+            float: left;
+            width: 33.33333333%;
+        }
+        
+        .col-third:last-of-type {
+            padding-right: 0;
+        }
+        
+        @media only screen and (max-width: 540px) {
+            .col-half {
+                width: 100%;
+                padding-right: 0;
+            }
+        }
+        
+        #regionData {
+            padding: 1em 3em 2em 3em;
+            margin: auto;
+            width: 100%;
+        }
+        
+        .styled-table {
+            border-collapse: collapse;
+            margin: auto;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+        
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        
+        .styled-table tbody td {
+            color: black;
+        }
+        
+        .styled-table tbody tr:nth-child(even) {
+            background-color: #837d7d;
+        }
+        
+        .summary {
+            color: black;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+    </script>
+
+</head>
+
+<body>
+
+    <!-- /container -->
+    <div class="main">
+        <div class="container">
+            <form>
+                <div class="row">
+                    <h4>Select Region</h4>
+
+                    <div class="input-group">
+
+                        <select name="regionSelect" id="regionSelect" class="form-control">
+                           <option value="">Select Region</option>
+                        </select>
+
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="summary">
+            <p onclick="findTotal()"> Total Countries: <span id="total"></span> </p>
+            <p onclick="findAverage()"> Average Population: <span id="avgSpan"></span> </p>
+        </div>
+        <div id="regionData">
+            <table class="styled-table" id="myTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Country Code</th>
+                        <th onclick="sortTable(1)">Country Name</th>
+                        <th onclick="sortTable(2)">County's Capital</th>
+                        <th onclick="sortTable(3)">Population</th>
+                        <th onclick="sortTable(4)">Language</th>
+                    </tr>
+                </thead>
+                <tbody id="countryData">
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A2/countryData.php?regions',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var regionSelect = $('#regionSelect');
+                    $.each(data, function(value) {
+                        var this_region = data[value];
+                        regionSelect.append('<option value=" ' + this_region + ' ">' + this_region + '</option>');
+                    });
+                }
+            });
+
+            $('#regionSelect').change(function() {
+                var region = $(this).val();
+                $('#countryData').html('');
+                console.log(region);
+                $.ajax({
+                    url: 'https://www.cs.kent.ac.uk/people/staff/yh/co539-A2/countryData.php?region=' + region,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        var countryData = $('#countryData');
+                        var keyCount = Object.keys(countryData).length;
+                        console.log(countryData);
+                        $.each(data, function(value) {
+                            var country = data[value];
+                            countryData.append('<tr><td>' + country.code + '</td><td>' + country.name + '</td><td>' + country.capital + '</td><td>' + country.info.population + '</td><td>' + country.info.language + '</td></tr>');
+
+                            var countryPopulation = [];
+
+
+
+                            countryPopulation.push(country);
+                            console.log(countryPopulation);
+
+                            //var count = Object.keys(countryPopulation).length;
+                            //console.log(count);
+
+                            var sum = 0;
+                            for (var i = 0; i < countryPopulation.length; i++) {
+                                sum += parseInt(countryPopulation[i]);
+                            }
+                            var avg = sum / countryPopulation.length;
+                            var avgSpan = document.getElementById("avgSpan");
+                            //avgSpan.innerHTML = avg;
+                            //console.log("Average " + avg);
+
+                        });
+
+                    }
+                });
+            });
+        });
+
+        setInterval(function findTotal() {
+            var rowCount = $('#myTable >tbody >tr').length;
+            console.log(rowCount);
+            var total = document.getElementById("total");
+            total.innerHTML = rowCount;
+        }, 1000);
+
+
+
+        setInterval(function findAverage() {
+            var table = $("table tbody");
+
+            var populationArray = [];
+            var sum = 0;
+
+
+            table.find('tr').each(function(i) {
+                var $tds = $(this).find('td'),
+                    population = $tds.eq(3).text(),
+                    population = parseInt(population);
+                populationArray.push(population);
+
+
+                console.log(population);
+                console.log(populationArray);
+
+                for (var i = 0; i < populationArray.length; i++) {
+                    sum += parseInt(populationArray[i]);
+                }
+                var avg = sum / populationArray.length;
+                avg = avg.toFixed(2);
+
+                console.log("Average " + avg);
+
+                var avgSpan = document.getElementById("avgSpan");
+                avgSpan.innerHTML = avg;
+
+            });
+        }, 1000);
+
+
+        function sortTable(n) {
+            var table,
+                rows,
+                switching,
+                i,
+                x,
+                y,
+                shouldSwitch,
+                dir,
+                switchcount = 0;
+            table = document.getElementById("myTable");
+            switching = true;
+            //Set the sorting direction to ascending:
+            dir = "asc ";
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < rows.length - 1; i++) { //Change i=0 if you have the header th a separate table.
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    /*check if the two rows should switch place,
+                    based on the direction, asc or desc:*/
+                    if (dir == "asc ") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc ") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    //Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /*If no switching has been done AND the direction is "asc ",
+                    set the direction to "desc " and run the while loop again.*/
+                    if (switchcount == 0 && dir == "asc ") {
+                        dir = "desc ";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
